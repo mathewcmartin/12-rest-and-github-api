@@ -13,13 +13,12 @@ var app = app || {};
       url: 'https://api.github.com/user/repos',
       method: 'GET',
       headers: {
-        Authorization: `token ${myGitHubToken}`,
+        Authorization: `token ${gitHubToken}`
       }
-      .then(
-        console.log('test');
-      )
     })
+      .then(
+        data => data.forEach(repo => console.log(repo))
+      );
   };
-
   module.aboutController = aboutController;
 })(app);
