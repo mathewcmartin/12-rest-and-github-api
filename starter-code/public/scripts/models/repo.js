@@ -20,7 +20,6 @@ var app = app || {};
     })
       .then( data => {
         repos.all = data;
-        console.log(repos.all)
       })
       .then(callback)
   };
