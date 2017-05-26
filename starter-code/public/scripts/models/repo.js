@@ -11,9 +11,17 @@ var app = app || {};
     //       Remember that the callback function we'll want to call relies on repos.all
     //       being an array with a bunch of repo objects in it, so you'll need to
     //       populate it with the response from Github before you call the callback.
-    repos.all = callback;
-    console.log(repos.all);
-
+    $.ajax({
+      url: 'https://api.github.com/user/repos',
+      method: 'GET',
+      headers: {
+        Authorization: `token ${gitHubToken}`
+      }
+    })
+      .then( data => {
+        repos.all = data;
+      })
+      .then(callback)
   };
 
   // REVIEW: Model method that filters the full collection for repos with a particular attribute.
